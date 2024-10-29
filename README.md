@@ -1,5 +1,5 @@
 # MNT-project
-MNT represents the initials of our major and the names of our team members. This project is particularly special as it signifies that we are the pioneering members and collaborators of this initiative.
+MNT represents the initials of our major in school (MATHEMATICS) and the names of our team members. This project is particularly special as it signifies that we are the pioneering members and collaborators of this initiative.
 
 # The Project Table
 | Project Number        | Title           | Leader  | Colaborator | Model Type | Performance | Status | Link | 
