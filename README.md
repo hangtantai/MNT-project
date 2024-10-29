@@ -4,4 +4,4 @@ MNT represents the initials of our major and the names of our team members. This
 # The Project Table
 | Project Number        | Title           | Leader  | Colaborator | Model Type | Performance | Status | Link | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|-----:|-----:|
-| 1 |Titanic - Machine Learning from Disaster| [hangtantai]()|[hoangnam]()|None|None|Started|[Titanic]()|
+| 1 |[Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)| [hangtantai](hangtantai)|[hoangnam](namnguyen1809)|None|None|Started|[Titanic]()|
