@@ -4,4 +4,4 @@ MNT represents the initials of our major in school (MATHEMATICS) and the names o
 # The Project Table
 | Project Number        | Title           | Leader | Colaborator |Colaborator | Model Type | Performance | Status | Link | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|-----:|-----:|-----:|
-| 1 |[Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)| [hangtantai](hangtantai)|[hoangnam](namnguyen1809)|[hoquoctuan](hquoctuan)|None|Started|[Titanic](https://github.com/hangtantai/MNT-project/tree/main/titanic-project)|
+| 1 |[Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)| [hangtantai](hangtantai)|[hoangnam](namnguyen1809)|[hoquoctuan](hquoctuan)|None|None|Started|[Titanic](https://github.com/hangtantai/MNT-project/tree/main/titanic-project)|
