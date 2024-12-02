@@ -1,3 +1,16 @@
+Result of Models Compare: 
+                                 Mean  Standard Deviation
+model_name                                              
+AdaBoostClassifier          1.000000            0.000000
+DecisionTreeClassifier      1.000000            0.000000
+GradientBoostingClassifier  1.000000            0.000000
+LinearSVC                   1.000000            0.000000
+LogisticRegression          1.000000            0.000000
+SVC                         1.000000            0.000000
+XGBClassifier               0.998601            0.003127
+RandomForestClassifier      0.994376            0.005889
+ExtraTreesClassifier        0.991579            0.009131
+KNeighborsClassifier        0.938176            0.013643 
 Result of ExtraTrees Classifier:
               precision    recall  f1-score   support
 

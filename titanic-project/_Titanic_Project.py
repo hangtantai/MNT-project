@@ -143,85 +143,6 @@ class DataSet:
         #self.test_df = preprocessor.transform(self.test_df)  # Ensure consistent processing for test data
         return self.train_df
     
-    def extra_trees_grid_search(self, param_grid=None):
-        if param_grid is None:
-            param_grid = {
-                
-                'n_estimators': [100, 200, 300],
-                'max_depth': [None, 10, 20],
-                'min_samples_split': [2, 5, 10],
-                'min_samples_leaf': [1, 2, 4],
-                'max_features': ['sqrt', 'log2', None],
-                'bootstrap': [True, False],  
-                'class_weight': [None, 'balanced'],
-                'n_jobs': [-1]
-                
-                }
-
-        model = Pipeline(steps=[
-            ('classifier', ExtraTreesClassifier(random_state=2024))
-        ])
-
-        # Tạo đối tượng GridSearchCV
-        grid_search = GridSearchCV(
-            estimator=model,
-            param_grid=param_grid,
-            cv=StratifiedKFold(5),
-            n_jobs=-1,  
-            verbose=2  
-        )
-
-        grid_search.fit(self.X_train, self.y_train)
-
-
-        print("Best parameters found: ", grid_search.best_params_)
-        print("Best cross-validation score: {:.2f}".format(grid_search.best_score_))
-
-        #Prediction on Val data set
-        y_pred = grid_search.predict(self.X_val)
-
-        
-        report = classification_report(self.y_val, y_pred)
-        print("Classification Report:\n", report)
-
-        return grid_search.best_estimator_
-    
-    def KNN(self, param_grid=None):
-        if param_grid is None:
-            param_grid = {
-                'n_neighbors': [3, 5, 7, 10],
-                'weights': ['uniform', 'distance'],
-                'metric': ['euclidean', 'manhattan', 'minkowski'],
-                'p': [1, 2]
-                }
-
-        model = Pipeline(steps=[
-            ('classifier', KNeighborsClassifier(random_state=2024))
-        ])
-
-        
-        grid_search = GridSearchCV(
-            estimator=model,
-            param_grid=param_grid,
-            cv=StratifiedKFold(5),
-            n_jobs=-1,  
-            verbose=2  
-        )
-
-        grid_search.fit(self.X_train, self.y_train)
-
-
-        print("Best parameters found: ", grid_search.best_params_)
-        print("Best cross-validation score: {:.2f}".format(grid_search.best_score_))
-
-        #Prediction on Val data set
-        y_pred = grid_search.predict(self.X_val)
-
-        
-        report = classification_report(self.y_val, y_pred)
-        print("Classification Report:\n", report)
-
-        return grid_search.best_estimator_
 
 
 class Modeling:
@@ -282,8 +203,8 @@ class Modeling:
             estimator=model,
             param_grid=param_grid,
             cv=StratifiedKFold(5),
-            n_jobs=-1,  # Sử dụng tất cả các luồng
-            verbose=2  # Hiển thị thông tin chi tiết về quá trình tìm kiếm
+            n_jobs=-1,  
+            verbose=2  
         )
 
         # Huấn luyện mô hình với GridSearchCV
@@ -305,15 +226,15 @@ class Modeling:
     def KNN(self, param_grid=None):
         if param_grid is None:
             param_grid = {
-                'classifier__n_neighbors': [3, 5, 7, 10],  # Chỉ rõ tham số n_neighbors cho KNeighborsClassifier
+                'classifier__n_neighbors': [3, 5, 7, 10],  
                 'classifier__weights': ['uniform', 'distance'],
-                'classifier__metric': ['euclidean', 'manhattan', 'minkowski'],  # Sửa tên tham số metric
+                'classifier__metric': ['euclidean', 'manhattan', 'minkowski'],  
                 'classifier__p': [1, 2]
             }
 
         # Xây dựng pipeline với KNeighborsClassifier
         model = Pipeline(steps=[
-            ('classifier', KNeighborsClassifier(n_jobs=-1))  # Loại bỏ random_state
+            ('classifier', KNeighborsClassifier(n_jobs=-1)) 
         ])
 
         # Tạo GridSearchCV
@@ -325,16 +246,11 @@ class Modeling:
             verbose=2
         )
 
-        # Huấn luyện mô hình với GridSearchCV
         grid_search.fit(self.X_train, self.y_train)
 
-        # Dự đoán trên tập validation
         y_pred = grid_search.predict(self.X_val)
 
-        # Sử dụng classification_report để hiển thị các chỉ số phân loại
         report = classification_report(self.y_val, y_pred)
-
-        # Trả về mô hình tốt nhất cùng với báo cáo phân loại
         return grid_search.best_estimator_, report
 
 
@@ -351,10 +267,11 @@ if __name__ == "__main__":
 
     # Modeling and evaluation
     modeling = Modeling(df_processed)
-    #results = modeling.model_compare(modeling.X_train, modeling.y_train, metrics="accuracy", cv=5)
+    results = modeling.model_compare(modeling.X_train, modeling.y_train, metrics="accuracy", cv=5)
     Extra_trees,report_Ex = modeling.extra_trees_grid_search()
     KNNClassifier,report_KNN = modeling.KNN()
     with open('model_results.txt', 'w') as file:
+        file.write(f"Result of Models Compare: \n {results} \n")
         file.write(f"Result of ExtraTrees Classifier:\n{report_Ex}\n")
         file.write(f"Result of KNN Classifier:\n{report_KNN}\n")
     
