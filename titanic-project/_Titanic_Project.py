@@ -258,8 +258,8 @@ class Modeling:
 
 if __name__ == "__main__":
     data_set = DataSet(
-        train_path="D:\\Git\\MNT-project\\titanic-project\\train.csv",
-        test_path="D:\\Git\\MNT-project\\titanic-project\\test.csv"
+        train_path="train.csv",
+        test_path="test.csv"
     )
     data_set.load_df()
     data_set.preprocessing()
